@@ -15,8 +15,7 @@ torchmetrics
 tensorboard
 
 # Streamlit UI
-streamlit==1.24.0
-streamlit-drawable-canvas
+streamlit
 
 # Medical imaging
 monai
