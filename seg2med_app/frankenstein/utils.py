@@ -98,7 +98,7 @@ def show_organ_axial(slice_img, organ_name, label_to_colors=None, organ_to_label
         ax.imshow(rgb_map, origin=default_plt_origin_type)
         ax.axis('off')
         st.pyplot(fig)'''
-        st.image(Image.fromarray(rgb_map), caption=f"{organ_name}", use_column_width=True)
+        st.image(Image.fromarray(rgb_map), caption=f"{organ_name}", use_container_width =True)
         
     return label_mask, rgb_map
 
