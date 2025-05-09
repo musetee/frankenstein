@@ -145,7 +145,6 @@ def frankenstein_control():
     
     if st.session_state["current_frankenstein_hash"] != st.session_state["existed_frankenstein_hash"]:
         st.session_state["existed_frankenstein_hash"] = st.session_state["current_frankenstein_hash"]
-        #slider = st.slider(f"{organ_name} slice", 0, num_slices - 1, num_slices // 2)
         
         progress_text = "⏳ processing organ data..."
         progress_bar = st.progress(0, text=progress_text)
@@ -196,7 +195,7 @@ def frankenstein_control():
         
         
         contour_slice_num = st.session_state["contour_frankenstein"].shape[2]
-        seg_tissue_slider_num = st.session_state["contour_frankenstein"].shape[2]
+        seg_tissue_slider_num = st.session_state["seg_tissue_frankenstein"].shape[2]
         fixed_organ_slider_num = st.session_state["minimum_fixed_organ_slice_num"]
         col1, col2, col3 = st.columns(3)
         with col1:
