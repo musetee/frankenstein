@@ -77,8 +77,16 @@ st.markdown(
 )
 
 st.title("\U0001F9E0 Frankenstein - multimodal medical image generation")
-st.markdown("created by Zeyu Yang, PhD Student at Computer-assisted Clinical Medicine, Uni Heidelberg")
-st.markdown("contact: Zeyu.Yang@medma.uni-heidelberg.de")
+st.markdown("""
+**Created by**: Zeyu Yang  
+PhD Student, Computer-assisted Clinical Medicine  
+University of Heidelberg  
+
+🔗 [GitHub Repository](https://github.com/musetee/frankenstein)  
+📄 [Preprint on arXiv](https://arxiv.org/abs/2504.09182)  
+✉️ Contact: [Zeyu.Yang@medma.uni-heidelberg.de](mailto:Zeyu.Yang@medma.uni-heidelberg.de)
+""")
+
 
 PASSWORD = "frankenstein"
 
