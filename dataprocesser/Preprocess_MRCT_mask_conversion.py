@@ -119,6 +119,7 @@ def convert_segmentation_mask(source_mask, source_csv, target_csv, body_contour_
     target_organ_names = list(target_mapping.keys())
     target_mask = np.full_like(source_mask, 0, dtype=source_mask.dtype)
 
+    print('source mask contains values:', np.unique(source_mask))
     # Convert each unique class in the source mask
     for class_value in np.unique(source_mask):
         # Find the corresponding organ name in the source modality
@@ -151,6 +152,10 @@ def convert_segmentation_mask(source_mask, source_csv, target_csv, body_contour_
                     print(f"[Manual match] '{organ_name}' → '{matched_name}' → label {target_value}")
                 else:
                     # Fuzzy match fallback
+                    if not target_organ_names:
+                        raise ValueError("target_organ_names is None or empty!")
+                    if not organ_name:
+                        raise ValueError("organ_name is None or empty!")
                     close_matches = difflib.get_close_matches(organ_name, target_organ_names, n=1, cutoff=0.4)
                     if close_matches:
                         matched_name = close_matches[0]

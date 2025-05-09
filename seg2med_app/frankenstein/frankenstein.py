@@ -216,7 +216,7 @@ def frankenstein_control():
             fixed_organ_volume = fixed_organ 
             fixed_organ_slice = processing_slice_to_right_orientation(fixed_organ_volume[:,:,fixed_orgna_slice_idx])
             label_mask_fixed_organ = convert_organ_mask_to_label(fixed_organ_slice, fixed_organ_name, st.session_state["organ_to_label"])
-            combine_label_fixed_organ_slice += label_mask_fixed_organ
+            combine_label_fixed_organ_slice = np.maximum(combine_label_fixed_organ_slice, label_mask_fixed_organ) 
         combine_fixed_organ_rgb_map = convert_label_to_rgb_map(combine_label_fixed_organ_slice, st.session_state["label_to_color"])
         
         
