@@ -83,7 +83,7 @@ st.markdown("contact: Zeyu.Yang@medma.uni-heidelberg.de")
 PASSWORD = "frankenstein"
 
 if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
+    st.session_state.authenticated = True # set False to be authenticated
 
 if not st.session_state.authenticated:
     st.session_state["app_password"] = st.text_input("Enter access code", type="password")
