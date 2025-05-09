@@ -1,2 +1,2 @@
-sdk: custom
+sdk: streamlit
 app_file: tutorial8_app.py
