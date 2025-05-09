@@ -1,6 +1,3 @@
-# Python version
-python==3.10
-
 # PyTorch + CUDA: Hugging Face Spaces only supports CPU, so we use CPU-compatible versions
 torch==2.4.1
 torchvision==0.19.1
