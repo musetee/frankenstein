@@ -91,7 +91,7 @@ def show_single_slice_label(label2d, label_colors, title="Label Slice"):
         for c in range(3):
             rgb_map[:, :, c][mask] = rgb_vals[c]
             
-    st.image(Image.fromarray(rgb_map), use_column_width=True)
+    st.image(Image.fromarray(rgb_map), use_container_width =True)
 
 def show_single_slice_image(image2d, title="Slice", orientation_type=default_orientation_type):
     """
@@ -113,7 +113,7 @@ def show_single_slice_image(image2d, title="Slice", orientation_type=default_ori
     ax.axis('off')
     st.pyplot(fig)'''
         
-    st.image(img_uint8, caption=title, use_column_width=True, clamp=True)
+    st.image(img_uint8, caption=title, use_container_width =True, clamp=True)
     
 def show_three_planes_interactive(image, z_idx, y_idx, x_idx, orientation_type=default_orientation_type):
     """

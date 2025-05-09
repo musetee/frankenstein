@@ -225,7 +225,7 @@ if load_method == "📁 Upload segmentation":
                     import pydicom
                     ds = pydicom.dcmread(orig_path)
                     dcm_img = ds.pixel_array
-                    st.image(dcm_img, caption="original image DICOM", clamp=True, use_column_width=True)
+                    st.image(dcm_img, caption="original image DICOM", clamp=True, use_container_width =True)
                 st.session_state["uploaded_origin_hash"] = new_origin_hash
         
         else:
