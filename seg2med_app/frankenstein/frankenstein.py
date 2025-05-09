@@ -232,7 +232,7 @@ def frankenstein_control():
         with col2:
             label_mask_seg_tissue, rgb_seg_tixssue = show_organ_axial(st.session_state["slice_frankenstein_seg_tissue"],'seg_tissue',st.session_state["label_to_color"],st.session_state["organ_to_label"],)
         with col3:
-            st.image(Image.fromarray(combine_fixed_organ_rgb_map), caption=f"fixed organ", use_column_width=True)
+            st.image(Image.fromarray(combine_fixed_organ_rgb_map), caption=f"fixed organ", use_container_width =True)
         
         ###### processing selected organs for transformation
         selected_organs = st.session_state["selected_organs_frankenstein"]
@@ -256,7 +256,7 @@ def frankenstein_control():
                 slice_data = processing_slice_to_right_orientation(organ_volume[:, :, st.session_state[slider_key]])
                 label_mask = convert_organ_mask_to_label(slice_data, organ_name, st.session_state["organ_to_label"])
                 rgb_img = convert_label_to_rgb_map(label_mask, st.session_state["label_to_color"])
-                st.image(Image.fromarray(rgb_img), use_column_width=True)
+                st.image(Image.fromarray(rgb_img), use_container_width =True)
                 
                 key_organ = f"slice_frankenstein_{organ_name}"
                 st.session_state[key_organ] = slice_data
