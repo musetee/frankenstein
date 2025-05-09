@@ -1,0 +1,43 @@
+name: torch
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8.10
+  - cudatoolkit=11.8
+  - pip:
+    - numpy==1.22.3
+    - opencv-python
+    - setuptools
+    - torchmetrics
+    - datasets
+    - ftfy
+    - tensorboard
+    - pandas
+    - matplotlib
+    - scikit-learn
+    - nibabel
+    - monai-generative
+    - simpleitk
+    - yacs
+    - Cython
+    # conda env create -f synthrad_conversion/environment.yml
+    # install huggingface:
+    #- -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+    #- -e git+https://github.com/openai/CLIP.git@main#egg=clip
+    #  - git+https://github.com/huggingface/diffusers.git
+
+    # pytorch
+    # pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu116
+    
+    # install monai dependencies:
+    # git clone https://github.com/Project-MONAI/MONAI.git
+    # cd MONAI/
+    # pip install -e '.[nibabel,skimage]' pynrrd
+
+    # - accelerate>=0.16.0
+    # - transformers>=4.25.1
+    # - imageio==2.14.1
+    # - imageio-ffmpeg==0.4.7

@@ -1,0 +1,16 @@
+!.gitignore
+/logs
+__pycache__*
+/*pycache*
+/model/*pycache*
+**/*pycache*
+*.out
+venv*
+helix_log
+checkpoints
+MONAI
+*.svg
+data
+generative-models
+datasets
+notuse

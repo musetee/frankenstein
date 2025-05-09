@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Organ Editor</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+  <style>
+    canvas {
+      border: 1px solid #ccc;
+      background: black;
+    }
+    .button-row {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h3 style="color:black;">Interactive Organ Editor</h3>
+  <canvas id="c" width="512" height="512"></canvas>
+
+  <div class="button-row">
+    <button onclick="exportTransforms()">Export JSON</button>
+    <button onclick="clearCanvas()">Clear All</button>
+  </div>
+
+  <script>
+    console.log("Loaded HTML");
+    window.canvas = new fabric.Canvas('c', {
+      backgroundColor: 'black',
+      selection: true
+    });
+
+    const fabricData = {{ data }}; 
+    console.log("Loaded paths:", fabricData);
+
+    if (!window.__loadedOnce__) {
+    fabricData.objects.forEach(obj => {
+        if (obj.type === 'path') {
+          const path = new fabric.Path(obj.path, {
+            fill: obj.fill,
+            stroke: obj.stroke,
+            strokeWidth: obj.strokeWidth || 1,
+            left: obj.left || 0,
+            top: obj.top || 0,
+            selectable: obj.selectable ?? true,
+            hasControls: obj.hasControls ?? true,
+            lockMovementX: obj.lockMovementX ?? false,
+            lockMovementY: obj.lockMovementY ?? false,
+            name: obj.name || '',
+            label: obj.label || null,
+            angle: obj.angle || 0,
+            scaleX: obj.scaleX || 1.0,
+            scaleY: obj.scaleY || 1.0
+          });
+          canvas.add(path);
+        }
+      });
+    canvas.renderAll();
+    window.__loadedOnce__ = true;  // 避免重复添加
+}   
+    console.log("First load:",  window.__loadedOnce__);
+    console.log("Canvas loaded. Objects:", canvas.getObjects());
+    
+    const rect = new fabric.Rect({
+        left: 100,
+        top: 100,
+        fill: 'red',
+        width: 200,
+        height: 200,
+      });
+      // 将矩形添加到画布上  
+      canvas.add(rect);
+      
+    function exportTransforms() {
+      const exportData = canvas.getObjects().map(obj => ({
+        name: obj.name || '',
+        label: obj.label || null,
+        left: obj.left,
+        top: obj.top,
+        scaleX: obj.scaleX,
+        scaleY: obj.scaleY,
+        angle: obj.angle,
+        path: obj.path || null
+      }));
+      console.log("Exported Transform Data:", exportData);
+      alert("Check the browser console (F12) for exported JSON.");
+    }
+
+    function clearCanvas() {
+      canvas.clear();
+      canvas.backgroundColor = 'black';
+    }
+  </script>
+  
+
+</body>
+
+</html>
