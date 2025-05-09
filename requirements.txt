@@ -1,3 +1,27 @@
-altair
-pandas
-streamlit
+# Python version
+python==3.10
+
+# PyTorch + CUDA: Hugging Face Spaces only supports CPU, so we use CPU-compatible versions
+torch==2.4.1
+torchvision==0.19.1
+torchaudio==2.4.1
+
+# NOTE: pytorch-cuda / cudatoolkit are not needed on Hugging Face (only CPU runtime supported)
+
+# Essential dependencies
+tqdm
+opencv-python
+charset-normalizer==3.3.2
+pynrrd
+pyyaml
+torchmetrics
+tensorboard
+
+# Streamlit UI
+streamlit==1.24.0
+streamlit-drawable-canvas
+
+# Medical imaging
+monai
+monai-generative
+totalsegmentator

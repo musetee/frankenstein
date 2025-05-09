@@ -1,0 +1,8 @@
+from dataprocesser.dataset_registry import DATASET_REGISTRY
+# register all the dataset in DATASET_REGISTRY
+import dataprocesser.dataset_anish 
+import dataprocesser.dataset_combined_csv
+import dataprocesser.dataset_combined_synthrad_anish
+import dataprocesser.dataset_csv_slice
+import dataprocesser.dataset_json
+import dataprocesser.dataset_synthrad

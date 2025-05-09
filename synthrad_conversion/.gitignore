@@ -1,0 +1,8 @@
+!.gitignore
+/logs
+/*pycache*
+/model/*pycache*
+**/*pycache*
+/mydataloader
+*.out
+checkpoints

@@ -1,0 +1,43 @@
+model_name: 'ddpm2d_seg2med_multimodal'
+GPU_ID: [0]
+ckpt_path: 'seg2med_app\model\cossim_model_100.pt'
+mode: 'train'
+dataset:
+  train_csv: 'tutorial2_train_ablation.csv'
+  test_csv: 'tutorial2_val_prior_1.csv'
+  batch_size: 16
+  val_batch_size: 1
+  normalize: 'scale2000'
+  zoom: (0.5,0.5,1.0)
+  resized_size: (256,256,None)
+  div_size: (None,None,None)
+  num_workers: 1
+  
+train:
+  val_epoch_interval: 1 
+  save_ckpt_interval: 1
+  num_epochs: 100
+  learning_rate: 0.0002
+  writeTensorboard: True
+  sample_range_lower: 10
+  sample_range_upper: 10
+  earlystopping_patience: 10
+  earlystopping_delta: 0.001
+  loss: 'cossim_contrastive'
+
+validation:
+  evaluate_restore_transforms: True
+  x_lower_limit: -1000
+  x_upper_limit: 3000
+  manual_aorta_diss: -1
+ddpm:
+  num_train_timesteps: 500
+  num_inference_steps: 500
+  num_channels: (64, 128, 256, 256)
+  attention_levels: (False, False, False, True)
+  num_res_units: 2
+  norm_num_groups: 32
+  num_head_channels: 32
+  noise_type: 'normal'
+
+  

@@ -1,0 +1,43 @@
+model_name: 'ddpm2d_seg2med'
+GPU_ID: [3]
+ckpt_path: 'logs\241118ddpm_512.pt'
+mode: 'test'
+dataset:
+  train_csv: 'synthrad_conversion\datacsv\ct_synthrad_testrest_newserver.csv'
+  test_csv: 'synthrad_conversion\datacsv\ct_synthrad_testrest_newserver.csv'
+  batch_size: 1
+  val_batch_size: 8
+  normalize: 'scale2000'
+  zoom: (1.0,1.0,1.0)
+  resized_size: (512,512,None)
+  div_size: (None,None,None)
+  WINDOW_WIDTH: 2000
+  WINDOW_LEVEL: 0
+  
+train:
+  val_epoch_interval: 1 
+  save_ckpt_interval: 1
+  num_epochs: 100
+  learning_rate: 0.0002
+  writeTensorboard: True
+  sample_range_lower: 0
+  sample_range_upper: 100000000
+  earlystopping_patience: 10
+  earlystopping_delta: 0.001
+
+validation:
+  evaluate_restore_transforms: True
+  x_lower_limit: -1000
+  x_upper_limit: 3000
+  manual_aorta_diss: -1
+ddpm:
+  num_train_timesteps: 500
+  num_inference_steps: 500
+  num_channels: (64, 128, 256, 256)
+  attention_levels: (False, False, False, True)
+  num_res_units: 2
+  norm_num_groups: 32
+  num_head_channels: 32
+  noise_type: 'normal'
+
+  
