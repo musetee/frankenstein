@@ -5,7 +5,7 @@ import numpy as np
 import streamlit as st
 from PIL import Image
 
-from streamlit_drawable_canvas import st_canvas
+from seg2med_app.streamlit_drawable_canvas import st_canvas
 from seg2med_app.simulation.get_labels import get_labels
 from seg2med_app.app_utils.image_utils import show_three_planes_interactive, show_label_overlay
 import time
