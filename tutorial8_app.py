@@ -75,6 +75,16 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# copyright for logo
+st.markdown(
+    """
+    <p style="font-size:10px; color:gray; text-align: right;">
+        Logo Frankenstein – Designed by <a href="https://www.freepik.com" target="_blank" style="color:gray;">Freepik</a>
+    </p>
+    """,
+    unsafe_allow_html=True
+)
+
 
 st.title("\U0001F9E0 Frankenstein - multimodal medical image generation")
 st.markdown("""
