@@ -31,7 +31,7 @@ def inference_controls():
         
         model_name_path = 'app'
         paths=config_path(model_name_path)
-        opt.ckpt_path = os.path.join('seg2med_app\model', f'{st.session_state["selected_model"]}_model_100.pt')
+        opt.ckpt_path = os.path.join('seg2med_app','model', f'{st.session_state["selected_model"]}_model_100.pt')
         print('selected ckpt:', opt.ckpt_path)
         model = DiffusionModel_multimodal_for_app(
             opt, paths,
