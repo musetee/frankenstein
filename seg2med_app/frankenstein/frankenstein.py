@@ -98,10 +98,6 @@ def frankenstein_control():
                                                                         st.session_state["fixed_organs_frankenstein"],
                                                                         'default')
         
-        '''(st.session_state["contour_frankenstein"], 
-        st.session_state["organs_frankenstein"], 
-        st.session_state["seg_tissue_frankenstein"]) = random_load(samples_path, needed_organs)'''
-        
     elif st.button("🧪 Semi-Chaotic Mode (recommended)"):
         print("click random load organs button")
         st.session_state["current_frankenstein_hash"] = hash_current_time()
@@ -142,7 +138,6 @@ def frankenstein_control():
     print('existed_frankenstein_hash:', st.session_state["existed_frankenstein_hash"])
     print('current_frankenstein_hash:', st.session_state["current_frankenstein_hash"])
     
-    
     if st.session_state["current_frankenstein_hash"] != st.session_state["existed_frankenstein_hash"]:
         st.session_state["existed_frankenstein_hash"] = st.session_state["current_frankenstein_hash"]
         
@@ -176,7 +171,6 @@ def frankenstein_control():
     if "prev_slice_indices_hash" not in st.session_state:
         st.session_state["prev_slice_indices_hash"] = ""
     
-    
     if "contour_frankenstein" in st.session_state:
         # ==================step3====================
         make_step_renderer(step3_frankenstein)
@@ -193,7 +187,7 @@ def frankenstein_control():
         seg_tissue_frankenstein_volume[seg_tissue_frankenstein_volume == 2] = 202
         seg_tissue_frankenstein_volume[seg_tissue_frankenstein_volume == 3] = 203
         
-        
+        make_step_renderer(instruction1_slider_frankenstein)
         contour_slice_num = st.session_state["contour_frankenstein"].shape[2]
         seg_tissue_slider_num = st.session_state["seg_tissue_frankenstein"].shape[2]
         fixed_organ_slider_num = st.session_state["minimum_fixed_organ_slice_num"]
@@ -218,12 +212,10 @@ def frankenstein_control():
             combine_label_fixed_organ_slice = np.maximum(combine_label_fixed_organ_slice, label_mask_fixed_organ) 
         combine_fixed_organ_rgb_map = convert_label_to_rgb_map(combine_label_fixed_organ_slice, st.session_state["label_to_color"])
         
-        
         debug_volume_orientation=False
         if debug_volume_orientation:
             show_three_planes_interactive(seg_tissue_frankenstein_volume, seg_tissue_slice_idx, 10, 10)
             show_label_overlay(seg_tissue_frankenstein_volume, seg_tissue_slice_idx, 10, 10,st.session_state["label_to_color"])
-        
         
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -233,6 +225,7 @@ def frankenstein_control():
         with col3:
             st.image(Image.fromarray(combine_fixed_organ_rgb_map), caption=f"fixed organ", use_container_width =True)
         
+        make_step_renderer(instruction2_slider_frankenstein)
         ###### processing selected organs for transformation
         selected_organs = st.session_state["selected_organs_frankenstein"]
         n_cols = 6  # 每行显示几个器官
@@ -338,6 +331,7 @@ def frankenstein_control():
         else:
             print("✅ Slice indices unchanged, skip reload.")
         
+        make_step_renderer(instruction1_canva_frankenstein)
         canvas_result = st_canvas(
             fill_color=None,
             stroke_width=2,

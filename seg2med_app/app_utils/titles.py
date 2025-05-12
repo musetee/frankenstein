@@ -11,6 +11,24 @@ if title_type == 'stwrite':
     step7_frankenstein = "### 🤖 Step 7: Run the **model inference** using the simulated prior image"
     step8_frankenstein = "### 💾 Step 8: **Download your Frankenstein!**"
 
+    instruction1_slider_frankenstein = (
+    "#### 🧠 The **fixed parts** below may come from different patients depending on the selected mode:\n"
+    "- 🧭 In **Default** and **Semi-Chaotic** modes, the body contour, tissue segmentation, and fixed organs are sourced from the **same patient**. \n"
+    "- In **Fully-Chaotic Mode**, these components are randomly taken from **different patients**."
+    )
+
+    instruction2_slider_frankenstein = (
+        "#### 🧠 The **editable organs** below may come from different patients depending on the selected mode:\n"
+        "- In **Default Mode**, they are from the same patient as the body.\n"
+        "- In **Semi-Chaotic Mode**, they are randomly selected from other patients.\n"
+        "- In **Fully-Chaotic Mode**, each organ may come from a different source."
+    )
+
+    instruction1_canva_frankenstein = (
+        "- On the Canvas, you can **drag, rotate, and scale** the editable organs to align and assemble your Frankenstein. \n"
+        "- Double-click on any organ to **remove** it from the canvas."
+    )
+    
 elif title_type == 'markdown':
     step_begin = """
     <div class="franken-step blue-box">
