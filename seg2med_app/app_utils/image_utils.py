@@ -13,10 +13,32 @@ from io import BytesIO
 default_orientation_type = 'transpose'
 default_plt_origin_type = 'upper'
 
-def image_to_base64(img):
+     
+def image_to_base64(img, width=200):
     buffered = BytesIO()
-    img.save(buffered, format="JPEG")
-    return base64.b64encode(buffered.getvalue()).decode()
+    if img.mode == "RGBA":
+        img.save(buffered, format="PNG")
+        result = base64.b64encode(buffered.getvalue()).decode()
+        st.markdown(
+            f"""
+            <div style='text-align: center;'>
+                <img src="data:image/png;base64,{result}" width="{width}">
+            </div>
+            """,
+            unsafe_allow_html=True
+            )
+    else:
+        img.save(buffered, format="JPEG")
+        result = base64.b64encode(buffered.getvalue()).decode()
+        st.markdown(
+            f"""
+            <div style='text-align: center;'>
+                <img src="data:image/jpeg;base64,{result}" width="{width}">
+            </div>
+            """,
+            unsafe_allow_html=True
+            )
+        
 
 def processing_slice_to_right_orientation(img_slice, type=default_orientation_type):
     if type == 'transpose':

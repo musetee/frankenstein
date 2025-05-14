@@ -66,24 +66,8 @@ def reset_app():
     print("App has been reset. Login information is preserved.")
     st._rerun()
     
-image = Image.open(os.path.join(app_root, "frankenstein.jpg"))
-st.markdown(
-    f"""
-    <div style='text-align: center;'>
-        <img src="data:image/jpeg;base64,{image_to_base64(image)}" width="150">
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-# copyright for logo
-st.markdown(
-    """
-    <p style="font-size:10px; color:gray; text-align: right;">
-        Logo Frankenstein – Designed by <a href="https://www.freepik.com" target="_blank" style="color:gray;">Freepik</a>
-    </p>
-    """,
-    unsafe_allow_html=True
-)
+image = Image.open(os.path.join(app_root, "Frankenstein0.png"))
+image_to_base64(image)
 
 
 st.title("\U0001F9E0 Frankenstein - multimodal medical image generation")
